@@ -36,7 +36,7 @@ echo "Creating virtual environment..."
 python$PYTHON_VERSION -m venv ~/$VENV_NAME
 
 # --- Activate venv ---
-source $VENV_NAME/bin/activate
+source ~/$VENV_NAME/bin/activate
 
 # --- Upgrade pip ---
 echo "Upgrading pip..."
@@ -47,4 +47,3 @@ echo "Installing packages from requirements.txt..."
 pip install -r requirements.txt
 
 echo "✅ Environment setup complete! To activate later: source $VENV_NAME/bin/activate"
-
