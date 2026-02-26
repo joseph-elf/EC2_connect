@@ -13,14 +13,18 @@ source ./config_EC2.sh
 echo
 
 
+
+
+
 if ! command -v python$PYTHON_VERSION &> /dev/null
 then
     echo "Python $PYTHON_VERSION not found, installing..."
     sudo apt update
     sudo apt install -y python$PYTHON_VERSION
 else
-    echo "Python $PYTHON_VERSION already installed."
+    echo "Python $PYTHON_VERSION already installed.  ✅"
 fi
+
 
 
 
