@@ -28,30 +28,6 @@ fi
 
 
 
-if ! dpkg -s python$PYTHON_VERSION-venv &> /dev/null; then
-    echo "Installing python$PYTHON_VERSION-venv... ⚙️"
-    sudo apt update
-    sudo apt install -y python$PYTHON_VERSION-venv
-else
-    echo "python$PYTHON_VERSION-venv already installed ✅"
-fi
-
-
-
-
-
-
-if ! dpkg -s python$PYTHON_VERSION-distutils &> /dev/null; then
-    echo "Installing python$PYTHON_VERSION-distutils... ⚙️"
-    sudo apt update
-    sudo apt install -y python$PYTHON_VERSION-distutils
-else
-    echo "python$PYTHON_VERSION-distutils already installed ✅"
-fi
-
-
-
-
 
 
 
@@ -62,6 +38,16 @@ if ! dpkg -s python$PYTHON_VERSION-dev  &> /dev/null; then
     sudo apt install -y python$PYTHON_VERSION-dev 
 else
     echo "python$PYTHON_VERSION-dev  already installed ✅"
+fi
+
+
+
+if ! dpkg -s python$PYTHON_VERSION-venv &> /dev/null; then
+    echo "Installing python$PYTHON_VERSION-venv... ⚙️"
+    sudo apt update
+    sudo apt install -y python$PYTHON_VERSION-venv
+else
+    echo "python$PYTHON_VERSION-venv already installed ✅"
 fi
 
 
