@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# --- Stop on first error ---
 set -e
 
 
@@ -14,8 +13,6 @@ source ./config_EC2.sh
 echo
 
 
-
-# --- Update & install python if missing ---
 if ! command -v python$PYTHON_VERSION &> /dev/null
 then
     echo "Python $PYTHON_VERSION not found, installing..."
@@ -25,25 +22,20 @@ else
     echo "Python $PYTHON_VERSION already installed."
 fi
 
-# --- Remove old venv if exists ---
 if [ -d "~/$VENV_NAME" ]; then
     echo "Removing existing virtual environment..."
     rm -rf $VENV_NAME
 fi
 
-# --- Create virtual environment ---
 echo "Creating virtual environment..."
 python$PYTHON_VERSION -m venv ~/$VENV_NAME
 
-# --- Activate venv ---
 source ~/$VENV_NAME/bin/activate
 
-# --- Upgrade pip ---
 echo "Upgrading pip..."
 pip install --upgrade pip
 
-# --- Install required packages ---
 echo "Installing packages from requirements.txt..."
 pip install -r requirements.txt
 
-echo "✅ Environment setup complete! To activate later: source $VENV_NAME/bin/activate"
+echo "✅ Environment setup complete! To activate later: source ~/$VENV_NAME/bin/activate"
