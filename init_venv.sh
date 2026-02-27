@@ -2,6 +2,7 @@
 
 set -e
 
+CONFIG_FILE="${1:-config_EC2.sh}"
 
 if [[ ! -f ./config_EC2.sh ]]; then
     echo "❌ Error: config_EC2.sh not found in the current directory!"

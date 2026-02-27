@@ -1,14 +1,15 @@
 #!/bin/bash
 
-if [[ ! -f ./config_EC2.sh ]]; then
-    echo "❌ Error: config_EC2.sh not found in the current directory!"
+CONFIG_FILE="${1:-config_EC2.sh}"
+
+if [[ ! -f ./$CONFIG_FILE ]]; then
+    echo "❌ Error: $CONFIG_FILE not found in the current directory!"
     exit 1
 fi
-
 echo
-echo "Openning config_EC2.sh :"
-
-source ./config_EC2.sh
+echo "Openning $CONFIG_FILE :"
+source ./$CONFIG_FILE
+echo
 
 echo "🖥️ Trying to connect to "$IP
 echo "as "$USERNAME
