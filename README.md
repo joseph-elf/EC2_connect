@@ -2,6 +2,12 @@
 
 It is a small set of bash files used to prepare AWS EC2 instances for remote calculations.
 
+This also works for GoogleCloudEngine ! But need to properly configure SSH keys (take care of the username)
+``` 
+#KEY
+ssh-ed25519 AAAA...  USERNAME
+```
+
 ### - Requirements :
 - Your project folder has to be a git repository linked to $GIT_HUB_repo_of_the_project.
 - Your project has to contain a config_EC2.sh file of this type:
