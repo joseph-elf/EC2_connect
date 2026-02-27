@@ -2,13 +2,13 @@
 
 CONFIG_FILE=${1:-config_EC2.sh}
 
-if [[ ! -f "$CONFIG_FILE" ]]; then
+if [[ ! -f "./$CONFIG_FILE" ]]; then
     echo "❌ Error: $CONFIG_FILE not found in the current directory!"
     exit 1
 fi
 echo
 echo "Opening $CONFIG_FILE :"
-source "$CONFIG_FILE"
+source "./$CONFIG_FILE"
 echo
 
 echo "🖥️ Trying to connect to "$IP
