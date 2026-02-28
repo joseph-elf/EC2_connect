@@ -3,6 +3,8 @@
 # kill if error
 set -e
 
+source init_venv.sh
+pip install fastapi uvicorn gunicorn
 
 sudo apt update
 sudo apt install nginx -y
