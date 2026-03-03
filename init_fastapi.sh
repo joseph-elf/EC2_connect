@@ -14,13 +14,26 @@ sudo apt install nginx -y
 
 sudo tee /etc/nginx/sites-available/fastapi > /dev/null << EOF
 server {
-    listen 80;
-    server_name _;
+    listen 80;      #lister ipv4:80
+    listen [::]:80; #listen ipv6:80
 
-    location / {
-        proxy_pass http://127.0.0.1:8000;
-        proxy_set_header Host \$host;
-        proxy_set_header X-Real-IP \$remote_addr;
+    server_name _;  #catch all
+
+    root /var/www/html; #static files user can access
+    index index.html;   #default file openned
+
+
+    location / {    #handle request starting by /
+        try_files \$uri /index.html;
+    }
+
+
+    location /api/ {
+    proxy_pass http://127.0.0.1:8000/;  # send request to local:8000, api
+    proxy_set_header Host \$host;   #give the server domain to the api
+    proxy_set_header X-Real-IP \$remote_addr;   #send the user ip to api
+    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;   
+    proxy_set_header X-Forwarded-Proto \$scheme;    #tell the api if its http or https
     }
 }
 EOF
